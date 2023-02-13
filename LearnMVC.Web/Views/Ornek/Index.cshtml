@@ -1,0 +1,26 @@
+@using LearnMVC.Web.Controllers
+
+@model List<Producta>
+@{
+    ViewData["Title"] = "Index";
+    var name = ViewBag.name;
+    var names = ViewData["names"];
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    @ViewBag.name
+</div>
+<p>@name</p>
+<p>Benim Yaşım @ViewData["age"]</p>
+
+@foreach (var item in ViewData["names"] as List<string>)
+{
+    <p>@item</p>
+}
+
+@foreach (var item in Model)
+{
+    <p>@item.Id - @item.Name</p>
+}
