@@ -31,10 +31,26 @@ public class ProductController : Controller
         return RedirectToAction("Index");
     }
 
-    public IActionResult Update()
+    [HttpGet]
+    public IActionResult Update(int id)
     {
-        return View();
+        // Güncellemek istediğimiz datanın id den bulup asıl update'in gerçekleşeceği sayfadaki forma gönderiyoruz çok rahat ediyoruz.
+        // Bu id parametresi bize asp-route-id den geliyor index den bak.
+        var product = _dbContext.Products.Find(id);
+        return View(product);
     }
+
+    [HttpPost]
+    public IActionResult Update(Product product)
+    {
+
+
+        _dbContext.Products.Update(product);
+        _dbContext.SaveChanges();
+
+        return RedirectToAction("Index");
+    }
+
 
     public IActionResult Add()
     {
@@ -42,19 +58,19 @@ public class ProductController : Controller
     }
 
     [HttpPost]
-    public IActionResult AddProduct()
+    public IActionResult Add(Product product)
     {
 
-        // 1.Yöntem HttpContext
+        // 1.Yontem HttpContext
+        // var name = HttpContext.Request.Form["Name"].ToString();
+        // var price = double.Parse(HttpContext.Request.Form["Price"].ToString());
 
-        var name = HttpContext.Request.Form["Name"].ToString();
-        var price = double.Parse(HttpContext.Request.Form["Price"].ToString());
+        // 2.Yontem 
+        // Method'un parametresi olarak product'ın fieldlarını yazıyoruz. name - price vs.
+        // Sonra bu fieldları diğer yöntemde ki gibi inputların name="" paramteresinden alıp mapleyip savechanges diyoruz.
 
-        Product product = new()
-        {
-            Name = name,
-            Price = price
-        };
+        // 3. Yontem Ve En Kaliteli Yontem
+        // Paramatereye class veriyoruz sonra bunun fieldlarını input tagine asp-for="" diyip burada veriyoruz.
 
         _dbContext.Products.Add(product);
         _dbContext.SaveChanges();

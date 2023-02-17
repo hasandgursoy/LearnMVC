@@ -1,9 +1,11 @@
-<form asp-controller="Product" asp-action="AddProduct" method="post">
+@model Product
+
+<form asp-controller="Product" asp-action="Add" method="post">
     <label for="">Ürün İsmi</label>
-    <input type="text" name="Name">
+    <input type="text" asp-for="Name">
     <br>
     <label for="">Ürün Price</label>
-    <input type="text" name="Price">
+    <input type="text" asp-for="Price">
 
     <button type="submit">Ürün Kaydet</button>
 </form>

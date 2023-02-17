@@ -1,0 +1,15 @@
+@model Product
+
+<h1>Ürün Güncelleme</h1>
+<form asp-controller="Product" asp-action="Update" method="post">
+
+    <input type="hidden" asp-for="Id">
+
+    <label for="">Ürün İsmi</label>
+    <input type="text" asp-for="Name">
+    <br>
+    <label for="">Ürün Price</label>
+    <input type="text" asp-for="Price">
+
+    <button type="submit">Ürün Güncelle</button>
+</form>

@@ -3,8 +3,8 @@
 
 
 <h1>Ürünler'e Hoş Geldiniz !</h1>
-<h2><a  asp-controller="product" asp-action="add">Ürün Eklemek İçin Tıklayın</a>
-    </h2>
+<h2><a asp-controller="product" asp-action="add">Ürün Eklemek İçin Tıklayın</a>
+</h2>
 <table class="table">
     <thead>
         <tr>
@@ -21,7 +21,7 @@
             <td>@product.Name</td>
             <td>@product.Price</td>
             <td><a asp-controller="product" asp-action="remove" asp-route-id="@product.Id">Sil</a></td>
-            <td><a asp-controller="product" asp-action="update" asp-route-id="@product">Güncelle</a></td>
+            <td><a asp-controller="product" asp-action="update" asp-route-id="@product.Id">Güncelle</a></td>
 
         </tr>
     }
